@@ -14,7 +14,7 @@ echo $'\n'
 for p in "${pkg_list[@]}"; do
 	$(pkg info -e "$p")
 	if [ $? -ne 0 ]; then
-		missing_pkgs+=("$p")
+		missing_pkgs+=($p)
 		echo $p added to install list
 	else
 		echo $p is present
