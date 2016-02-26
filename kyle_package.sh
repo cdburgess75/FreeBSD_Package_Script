@@ -7,7 +7,7 @@ while read line; do
 	pkg_list+=($line)
 done < $FILE
 
-echo "List of packages to check are:"
+echo List of packages to check are:
 echo "${pkg_list[@]}"
 echo $'\n'
 
@@ -22,5 +22,5 @@ for p in "${pkg_list[@]}"; do
 done
 
 echo $'\n'
-echo "The list of packages to install are:"
+echo The list of packages to install are:
 echo "${missing_pkgs[@]}"
