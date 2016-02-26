@@ -1,0 +1,17 @@
+php
+mysesql-server
+php-mysql
+sendmail
+unzip
+zip
+php-mcrypt
+vim-lite
+zsh
+sudo
+git
+tmux
+curl
+rsync
+tree
+byobu
+wget

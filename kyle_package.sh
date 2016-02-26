@@ -1,10 +1,17 @@
 #!/usr/local/bin/bash
-nagiosim_pkgs=( "php" "mysesql-server" "php-mysql" "sendmail" "unzip" "zip" "php-mcrypt" )
-base_pkgs=( "vim-lite" "zsh" "sudo" "git" "tmux" "curl" "rsync" "tree" "byobu" "wget" )
-
 declare -a missing_pkgs=()
+declare -a pkg_list=()
 
-for p in "${nagiosim_pkgs[@]}"; do
+FILE=$1
+while read line; do
+	pkg_list+=($line)
+done < $FILE
+
+echo "List of packages to check are:"
+echo "${pkg_list[@]}"
+echo $'\n'
+
+for p in "${pkg_list[@]}"; do
 	$(pkg info -e "$p")
 	if [ $? -ne 0 ]; then
 		missing_pkgs+=("$p")
@@ -14,4 +21,6 @@ for p in "${nagiosim_pkgs[@]}"; do
 	fi
 done
 
+echo $'\n'
+echo "The list of packages to install are:"
 echo "${missing_pkgs[@]}"
