@@ -24,3 +24,22 @@ done
 echo $'\n'
 echo The list of packages to install are:
 echo "${missing_pkgs[@]}"
+echo $'\n'
+
+sudo pkg update
+
+
+for o in "${missing_pkgs[@]}"; do
+	$(pkg install "$o" -qy)
+done
+
+for p in "${missing_pkgs[@]}"; do
+	$(pkg info -e "$p")
+done
+
+if [${#missing_pkgs[@]} -gt 0]; do
+	echo The following packages are still missing:
+	echo "${missing_pkgs[@]}"
+else
+	echo All packages successfully installed!
+done
